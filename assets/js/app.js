@@ -95,16 +95,16 @@ var chart2 = new Chart(ctx_live, {
     }
 });
 
-var postId = moment().format('MMMM Do YYYY, h:mm a');
+var timeStamp = moment().format('MMMM Do YYYY, h:mm a');
 
 var getData = function() {
   $.ajax({
-    url: 'https://jsonplaceholder.typicode.com/posts/' + postId + '/comments',
+    url: 'https://jsonplaceholder.typicode.com/posts/' + timeStamp + '/comments',
     success: function(data) {
-      postId = moment().format('MMMM Do YYYY, h:mm a');
+      timeStamp = moment().format('MMMM Do YYYY, h:mm a');
 
-      chart1.data.labels.push(postId);
-      chart2.data.labels.push(postId);
+      chart1.data.labels.push(timeStamp);
+      chart2.data.labels.push(timeStamp);
       chart1.data.datasets[0].data.push(getRandomIntInclusive(165, 180));
       chart2.data.datasets[0].data.push(getRandomIntInclusive(2, 2));
 
