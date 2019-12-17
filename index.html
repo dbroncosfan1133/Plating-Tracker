@@ -7,12 +7,23 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
-    <title>Plating Trends</title>
+    <title>ENIG Plating Trends</title>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1 mainHeader">Plating Tracker</span>
+        <span class="navbar-brand mb-0 h1 mainHeader">ENIG Plating Tracker</span>
     </nav>
+    <form>
+        <div class="form-group">
+            <label for="nickelThickness" class="ml-2">Nickel Thickness:</label>
+            <input type="number" class="form-control col-2 ml-2" id="niThick" placeholder="Enter Nickel thickness..">
+        </div>
+        <div class="form-group">
+            <label for="auThickness" class="ml-2">Gold Thickness:</label>
+            <input type="number" class="form-control col-2 ml-2" id="auThick" placeholder="Enter Gold thickness..">
+        </div>
+        <button type="submit" class="btn btn-info ml-2" id="niAuSubmit">Submit</button>
+    </form>
     <div class="row">
         <canvas class="col-6" id="myChart1"></canvas>
         <canvas class="col-6" id="myChart2"></canvas>
@@ -21,6 +32,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="assets/js/app.js"></script> 
+<script src="assets/js/app.js"></script>
 </body>
 </html>

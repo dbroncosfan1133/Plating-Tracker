@@ -1,13 +1,35 @@
 $(document).ready(function() {
 
-var nickelThickness = [];
-var goldThickness =[];
+var measurements = {
+    nickelThickness: [],
+    goldThickness: []
+};
 
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.random() * (max - min + 1) + min;
-}
+$("#niAuSubmit").on("click", function(event){
+    event.preventDefault();
+
+    var nickel = $("#niThick").val().trim();
+    var gold = $("#auThick").val().trim();
+
+    measurements.nickelThickness.push(parseFloat(nickel));
+    measurements.goldThickness.push(parseFloat(gold));
+
+    getData();
+
+    $("#niThick").val("");
+    $("#auThick").val("");
+});
+
+// var fs = require("fs");
+// var fileContent = "Hello, does this work?";
+
+// fs.writeFile("./data.txt", fileContent, (err) => {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     };
+//     console.log("File has been created!");
+// })
 
 var ctx_live = document.getElementById('myChart1').getContext('2d');
 var chart1 = new Chart(ctx_live, {
@@ -16,7 +38,7 @@ var chart1 = new Chart(ctx_live, {
         labels: [],
         datasets: [
         {
-            data: nickelThickness,
+            data: measurements.nickelThickness,
             label: 'Nickel Thickness',
             borderColor: '#545454',
             backgroundColor: '#545454',
@@ -52,14 +74,14 @@ var chart1 = new Chart(ctx_live, {
     }
 });
 
-var ctx_live = document.getElementById('myChart2').getContext('2d');
-var chart2 = new Chart(ctx_live, {
+var ctx = document.getElementById('myChart2').getContext('2d');
+var chart2 = new Chart(ctx, {
     type: 'line',
     data: {
         labels: [],
         datasets: [
         {
-            data: goldThickness,
+            data: measurements.goldThickness,
             label: 'Gold Thickness',
             borderColor: '#d4af37',
             backgroundColor: '#d4af37',
@@ -105,17 +127,12 @@ var getData = function() {
 
       chart1.data.labels.push(timeStamp);
       chart2.data.labels.push(timeStamp);
-      chart1.data.datasets[0].data.push(getRandomIntInclusive(165, 180));
-      chart2.data.datasets[0].data.push(getRandomIntInclusive(2, 2));
 
       chart1.update();
       chart2.update();
     }
   });
 };
-
-
-setInterval(getData, 3000);
 
 //ready() callback
 });
